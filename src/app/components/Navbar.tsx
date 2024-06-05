@@ -4,10 +4,18 @@ import Link from "next/link";
 export default function Navbar() {
     return (
         <nav className="w-full flex items-center justify-between mt-5 pl-8">
-            <div className="">
-            <Link href={"/"}>
-                <Image src="/images/logoText.png" alt="Imagem logo do site" width={150} height={0} priority={true} />
-            </Link>
+            <div className="w-[150px]">
+                <Link href={"/"}>
+                    <Image 
+                        src="/images/logoText.png" 
+                        alt="Imagem logo do site" 
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        priority={true}
+                        className="w-full h-auto"
+                    />
+                </Link>
             </div>
 
             <ul className="flex gap-3 pr-8 text-[1.2rem] text-[--color-white-200]">
