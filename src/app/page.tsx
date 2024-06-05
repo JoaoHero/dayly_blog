@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar";
+import PostsList from "./components/Posts-list";
 
 export default function Home() {
   return (
@@ -21,6 +22,8 @@ export default function Home() {
             front-end, design de interface e, é claro, apreciação de café!
           </p>
         </section>
+
+        <PostsList />
       </main>
     </>
 
