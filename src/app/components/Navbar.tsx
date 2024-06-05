@@ -22,7 +22,7 @@ export default function Navbar() {
                 <li className="hover:text-[--color-primary] transition-colors duration-500"><Link href={"/"}>Inicio</Link></li>
                 <li className="hover:text-[--color-primary] transition-colors duration-500"><Link href={"/"}>Sobre</Link></li>
                 <li className="hover:text-[--color-primary] transition-colors duration-500"><Link href={"/"}>Setup</Link></li>
-                <li className="hover:text-[--color-primary] transition-colors duration-500"><Link href={"/"}>Login</Link></li>
+                <li className="hover:text-[--color-primary] transition-colors duration-500"><Link href={"/login"}>Login</Link></li>
             </ul>
         </nav>
     )
