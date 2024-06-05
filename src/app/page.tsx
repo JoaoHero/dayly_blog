@@ -4,10 +4,6 @@ import PostsList from "./components/Posts-list";
 export default function Home() {
   return (
     <>
-      <header className="max-w-[800px] mx-auto">
-        <Navbar />
-      </header>
-
       <main className="max-w-[800px] mx-auto">
         <section className="max-w-[1200px] mx-auto p-10">
           <h1 className="text-white font-bold text-2xl mt-5 mb-3">Olá, sou João Ramos 👋🏼</h1>
