@@ -1,4 +1,5 @@
 import Link from "next/link"
+import BlogLikes from "./BlogLikes"
 
 interface PostsItemProps {
     id: string,
@@ -15,7 +16,10 @@ export default function PostsItem({ id, title, shortDescription, tag }: PostsIte
                 <h2 className="text-xl text-white font-bold">{title}</h2>
                 <p className="text-[--color-white-200] mt-5 text-justify">{shortDescription}</p>
 
-                <p className="text-[1.2rem] uppercase text-[--color-primary] text-justify flex mt-10">{tag}</p>
+                <div className="flex items-end justify-between h-[5rem]">
+                    <p className="text-[1.2rem] uppercase text-[--color-primary] text-justify flex">{tag}</p>
+                    <BlogLikes blogId={id} />
+                </div>
                 
               </div>
           </Link>
