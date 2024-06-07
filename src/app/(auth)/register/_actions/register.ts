@@ -3,6 +3,8 @@
 import { db } from "@/app/lib/prisma";
 import { hashSync } from "bcrypt-ts";
 
+import { validateEmail, validatePassword } from "@/app/utils/validationUtils"
+
 export default async function register(FormData: FormData) {
     const name = FormData.get("name") as string;
     const email = FormData.get("email") as string;
@@ -10,6 +12,19 @@ export default async function register(FormData: FormData) {
 
     if(!name || !email || !password) {
         return { success: false, message: 'Necessário preencher todos os campos.' };
+    }
+
+    const checkEmail = validateEmail(email)
+    const checkPassword = validatePassword(password)
+
+    console.log(checkEmail)
+
+    if(checkEmail.error) {
+        return { success: false, message: checkEmail.message };
+    }
+
+    if(checkPassword.error) {
+        return { success: false, message: `Senha: ${checkPassword.message}`};
     }
 
     const user = await db.user.findUnique({
