@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import login from "./_actions/login"
+const Cookies = require('js-cookie');
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -15,11 +16,13 @@ export default function Login() {
         const result = await login(formData);
 
         if (result.success) {
+            Cookies.set('Session', result.token, { expires: 1, path: '/', httpOnly: true, secure: true, sameSite: 'strict' });
+
             toast.success(result.message, { position: "top-right" });
 
             return setTimeout(() => {
                 window.location.href = "/";
-            }, 3000) 
+            }, 3000)
 
         } else {
             toast.error(result.message, { position: "top-right" });

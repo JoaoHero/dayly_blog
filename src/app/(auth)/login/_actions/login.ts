@@ -2,7 +2,7 @@
 
 import { db } from "@/app/lib/prisma";
 import { compareSync } from "bcrypt-ts";
-import { redirect } from "next/navigation";
+const jwt = require('jsonwebtoken');
 
 export default async function login(formData: FormData) {
     const { email, password } = Object.fromEntries(formData.entries());
@@ -27,5 +27,13 @@ export default async function login(formData: FormData) {
         return { success: false, message: 'Email ou senha inválidos.' };
     }
 
-    return { success: true, message: 'Login bem-sucedido.' };
+    const tokenPayload = {
+        userId: user.id,
+        name: user.name,
+        userImg: user.img
+    };
+
+    const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    return { success: true, message: 'Login bem-sucedido.', token };
 }
