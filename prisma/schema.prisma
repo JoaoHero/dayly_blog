@@ -19,6 +19,15 @@ model Blog {
   likes              Like[]
 }
 
+model User {
+  id            String @id @default(cuid())
+  name          String?
+  email         String @unique
+  password      String?
+  img           String? @default("/images/userDefaultProfile.png")
+  likes         Like[]
+}
+
 model Comment {
   id        String   @id @default(uuid())
   content   String
@@ -32,14 +41,7 @@ model Like {
   id        String   @id @default(uuid())
   userId    String
   createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
   blog      Blog     @relation(fields: [blogId], references: [id])
   blogId    String
-}
-
-model User {
-  id            String @id @default(cuid())
-  name          String?
-  email         String @unique
-  password      String?
-  img           String? @default("/images/userDefaultProfile.png")
 }
