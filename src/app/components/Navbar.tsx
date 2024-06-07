@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Navbar() {
     return (
-        <nav className="w-full flex items-center justify-between mt-5 pl-8">
-            <div className="w-[150px]">
+        <nav className="w-full flex items-center justify-center mt-5 pl-8 sm:justify-between">
+            <div className="w-[150px] hidden sm:flex">
                 <Link href={"/"}>
                     <Image 
                         src="/images/logoText.png" 
