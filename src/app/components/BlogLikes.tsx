@@ -11,8 +11,17 @@ export default async function BlogLikes({ blogId }: BlogLikesProps) {
     const likes = await db.like.findMany({
         where: {
             blogId: blogId
+        },
+        include: {
+            user: {
+                select: {
+                    img: true,
+                    name: true
+                }
+            }
         }
     })
+
 
     return (
         <div className="flex items-center gap-3">
