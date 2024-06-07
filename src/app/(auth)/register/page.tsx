@@ -25,8 +25,8 @@ export default function Register() {
     }
 };
     return (
-      <div className="overflow-hidden">
-        <div className="h-[calc(100vh-52px)] flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="overflow-hidden h-[calc(100vh-52px)] flex items-center justify-center">
+        <div className=" flex flex-col justify-center px-6 py-12 lg:px-8 sm:w-[35rem] rounded-lg bg-[--color-dark-200]  border border-[--color-dark-400]">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
               className="mx-auto h-10 w-auto"
