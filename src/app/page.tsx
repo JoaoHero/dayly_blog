@@ -1,4 +1,3 @@
-import Navbar from "./components/Navbar";
 import PostsList from "./components/Posts-list";
 
 export default function Home() {
@@ -22,6 +21,5 @@ export default function Home() {
         <PostsList />
       </main>
     </>
-
   );
 }
