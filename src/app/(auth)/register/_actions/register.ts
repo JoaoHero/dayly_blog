@@ -17,8 +17,6 @@ export default async function register(FormData: FormData) {
     const checkEmail = validateEmail(email)
     const checkPassword = validatePassword(password)
 
-    console.log(checkEmail)
-
     if(checkEmail.error) {
         return { success: false, message: checkEmail.message };
     }
