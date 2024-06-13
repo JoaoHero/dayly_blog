@@ -14,7 +14,7 @@ export default async function PostsList() {
     })
 
     return (
-        <div className="flex flex-col gap-5 p-10">
+        <div className="flex flex-col gap-5 p-3 sm:p-10">
             {posts.map((post) => (
                 <>
                     <PostsItem key={post.id} id={post.id} title={post.title} shortDescription={post.shortDescription} tag={post.tag} />

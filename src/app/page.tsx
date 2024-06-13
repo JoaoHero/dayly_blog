@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       <main className="max-w-[800px] mx-auto">
-        <section className="max-w-[1200px] mx-auto p-10">
+        <section className="max-w-[1200px] mx-auto p-3 sm:p-10">
           <h1 className="text-white font-bold text-2xl mt-5 mb-3">Olá, sou João Ramos 👋🏼</h1>
           <span className="text-[--color-white-200] font-bold">Zona Sul, São Paulo</span>
           <p className="text-white mt-5 text-justify">
