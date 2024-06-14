@@ -3,6 +3,7 @@ import { db } from "@/app/lib/prisma"
 import Image from "next/image"
 import Comments from "@/app/components/Comments"
 import AddComment from "../components/addComment"
+import AddLike from "../components/addLike"
 
 interface PostsProps {
     params: {
@@ -40,6 +41,8 @@ export default async function Posts({ params: {id} }: PostsProps) {
                     className="w-full h-full"
                 />
             </div>
+
+            <AddLike blogID={id} />
 
             <div className="mt-[5rem] relative">
                 <div className="w-full flex justify-between">
