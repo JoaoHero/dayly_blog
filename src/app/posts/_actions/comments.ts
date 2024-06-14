@@ -21,7 +21,8 @@ export default async function comments(FormData: FormData, blogID: string) {
     await db.comment.create({
         data: {
             content: comment,
-            authorId: String(session.user.githubProfile.id),
+            userImg: session.user.githubProfile.avatar_url,
+            userName: String(session.user.githubProfile.name),
             blogId: blogID
         }
     })

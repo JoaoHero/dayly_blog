@@ -21,20 +21,19 @@ model Blog {
 
 model User {
   id            String @id @default(cuid())
+  gitHubId      String
   name          String?
   email         String @unique
-  password      String?
   img           String? @default("/images/userDefaultProfile.png")
   likes         Like[]
-  comments      Comment[]
 }
 
 model Comment {
   id        String   @id @default(uuid())
   content   String
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String
   createdAt DateTime @default(now())
+  userImg   String
+  userName  String
   blog      Blog     @relation(fields: [blogId], references: [id])
   blogId    String
 }

@@ -11,9 +11,6 @@ export default async function Comments({ blogID }: CommentsProps) {
     const comments = await db.comment.findMany({
         where: {
             blogId: blogID
-        },
-        include: {
-            author: true
         }
     })
 
@@ -22,17 +19,18 @@ export default async function Comments({ blogID }: CommentsProps) {
             {comments.map((comments) => (
                 <div className="">
                     <div className="flex items-center gap-3">
-                        <Image 
-                            src={`${comments.author.img}`}
-                            alt="Imagem do usuário"
-                            width={30}
-                            height={30}
-                            priority={true}
-                            className="rounded-full"
-                        />
+                            <Image 
+                                src={`${comments.userImg}`}
+                                alt="Imagem do usuário"
+                                width={60}
+                                height={60}
+                                priority={true}
+                                sizes="100vw"
+                                className="rounded-full"
+                            />
 
                         <div className="w-full flex flex-col">
-                            <p className="text-[--color-primary]">{comments.author.name}</p>
+                            <p className="text-[--color-primary]">{comments.userName}</p>
                         </div>
                     </div>
 
