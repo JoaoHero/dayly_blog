@@ -26,12 +26,14 @@ model User {
   password      String?
   img           String? @default("/images/userDefaultProfile.png")
   likes         Like[]
+  comments      Comment[]
 }
 
 model Comment {
   id        String   @id @default(uuid())
   content   String
-  author    String
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
   createdAt DateTime @default(now())
   blog      Blog     @relation(fields: [blogId], references: [id])
   blogId    String
