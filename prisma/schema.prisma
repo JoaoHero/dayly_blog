@@ -25,7 +25,6 @@ model User {
   name          String?
   email         String @unique
   img           String? @default("/images/userDefaultProfile.png")
-  likes         Like[]
 }
 
 model Comment {
@@ -42,7 +41,6 @@ model Like {
   id        String   @id @default(uuid())
   userId    String
   createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
   blog      Blog     @relation(fields: [blogId], references: [id])
   blogId    String
 }
