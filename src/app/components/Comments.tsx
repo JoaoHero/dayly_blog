@@ -30,11 +30,11 @@ export default async function Comments({ blogID }: CommentsProps) {
                             />
 
                         <div className="w-full flex flex-col">
-                            <p className="text-[--color-primary]">{comments.userName}</p>
+                            <p className="text-[--color-primary] text-[1.2rem]">{comments.userName}</p>
                         </div>
                     </div>
 
-                    <div className="mt-3">
+                    <div className="mt-3 ml-[1rem]">
                         <p>{comments.content}</p>
                     </div>
                 </div>
