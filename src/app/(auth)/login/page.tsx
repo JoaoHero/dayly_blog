@@ -1,5 +1,3 @@
-import Image from "next/image"
-
 import 'react-toastify/dist/ReactToastify.css'
 import LoginGitHubButton from "@/app/(auth)/login/components/LoginGitHubButton";
 import { getServerSession } from "next-auth";
