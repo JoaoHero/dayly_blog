@@ -17,7 +17,7 @@ export default async function Comments({ blogID }: CommentsProps) {
     return (
         <section className="flex flex-col gap-10 w-full p-[3rem]">
             {comments.map((comments) => (
-                <div className="">
+                <div className="" key={comments.id}>
                     <div className="flex items-center gap-3">
                             <Image 
                                 src={`${comments.userImg}`}

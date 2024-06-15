@@ -30,7 +30,7 @@ export default function AddLike({ blogID }: addLikeProps) {
         }
 
         fetchData();
-    },[])
+    },[blogID])
 
     async function handleClick() {
         const result = await like(blogID)
