@@ -32,7 +32,9 @@ export default async function like(blogID: string) {
     await db.like.create({
         data: {
             userId: String(session.user.githubProfile.id),
-            blogId: blogID
+            blogId: blogID,
+            userName: String(session.user.githubProfile.name),
+            userImg: session.user.githubProfile.avatar_url
         }
     })
 

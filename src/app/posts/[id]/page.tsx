@@ -5,6 +5,7 @@ import Comments from "@/app/components/Comments"
 import AddComment from "../components/addComment"
 import AddLike from "../components/addLike"
 
+
 interface PostsProps {
     params: {
         id: string

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { db } from "../lib/prisma";
-import BlogLikesBy from "./BlogLikesBy";
+import BlogLikesQuant from "./blogLikesQuant";
 
 interface BlogLikesProps {
     blogId: string,
@@ -12,22 +12,13 @@ export default async function BlogLikes({ blogId }: BlogLikesProps) {
         where: {
             blogId: blogId
         },
-        include: {
-            user: {
-                select: {
-                    img: true,
-                    name: true
-                }
-            }
-        }
     })
 
-
     return (
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
             <Image src={"/images/like-icon.png"} alt="Icone de curtidas dos posts" width={25} height={25} />
 
-            <BlogLikesBy quantLikes={likes.length} likes={likes} />
+            <BlogLikesQuant likesQuant={likes.length} likes={likes} />
         </div>
     )
 }

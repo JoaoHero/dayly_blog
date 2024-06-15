@@ -41,6 +41,8 @@ model Like {
   id        String   @id @default(uuid())
   userId    String
   createdAt DateTime @default(now())
+  userImg   String
+  userName  String
   blog      Blog     @relation(fields: [blogId], references: [id])
   blogId    String
 }

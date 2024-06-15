@@ -1,62 +1,53 @@
 'use client'
 
-import { useState } from "react"
-import Image from "next/image"
+import { useState } from "react";
+import Image from "next/image";
 
 interface BlogLikesByProps {
-    quantLikes: number;
-    likes: Like[];
+    likes: Likes[]
 }
 
-interface Like {
-    id: string;
-    userId: string;
-    user: {
-        name: string | null;
-        img: string | null;
+interface Likes {
+    id: string,
+    userId: string,
+    createdAt: Date,
+    userName: string,
+    userImg: string,
+    blogId: string
+}
+
+export default function BlogLikesBy({ likes }: BlogLikesByProps) {
+
+    const [isModalVisible, setIsModalVisible] = useState('hidden');
+
+    const showModal = () => {
+      if(isModalVisible === "hidden") {
+        setIsModalVisible("")
+      }else {
+        setIsModalVisible("hidden")
+      }
     };
-}
-
-export default function BlogLikesBy({ quantLikes, likes }: BlogLikesByProps) {
-
-    const [mostrarDiv, setMostrarDiv]: any = useState(false)
-
-    let noLikeWarning = ""
-    if (likes.length === 0) {
-        noLikeWarning = "Seja o primeiro a curtir :)"
-    }
-
-    function handleClick() {
-        console.log("Clicou");
-    }
 
     return (
-        <div className="relative" onMouseEnter={() => setMostrarDiv(true)} onMouseLeave={() => setMostrarDiv(false)} onClick={handleClick}>
-            <p>{quantLikes}</p>
+        <div>
+            <div className={`z-10 w-full sm:w-[30rem] h-[20rem] overflow-auto border-2 border-[--color-dark-400] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-[--color-dark-200] rounded-xl ${isModalVisible} cursor-default`}>
+                <p onClick={showModal} className="absolute right-5 top-3 cursor-pointer">X</p>
 
-            {noLikeWarning && (
-                <div className={`${mostrarDiv ? 'flex' : 'hidden'} flex z-10 h-[10rem] bg-[--color-dark] absolute top-[-12rem] left-[-9rem] rounded-lg gap-3 flex-col border-2 border-[--color-dark-400]`}>
-                    <p className="h-full text-center w-[10rem] items-center flex">{noLikeWarning}</p>
+                <div className="mt-[2rem] mb-[2rem] flex flex-col gap-4 items-center justify-center">
+                    <h2 className="text-[--color-primary] mb-[1rem]">Lista de curtidas</h2>
+
+                    {likes.map((element) => (
+                        <div key={element.id} className="flex gap-3 items-center text-center">
+                            <Image src={element.userImg} alt="Imagem do usuário" width={40} height={40} sizes="100vw" className="rounded-full" />
+                            <p>{element.userName}</p>
+                        </div>
+                    ))}
                 </div>
-            )}
 
-            <div className={`${mostrarDiv ? 'flex' : 'hidden'} h-[10rem] p-[3rem] bg-[--color-dark] absolute top-[-12rem] left-[-8rem] rounded-lg items-center justify-center gap-3 flex-col border-2 border-[--color-dark-400]`}>
-
-                {likes.map((likes) => (
-                    <div key={likes.id} className="flex gap-3 items-center justify-center">
-                        <Image 
-                            src={`${likes.user.img}`}
-                            alt="Icone do gitHub do Usuário"
-                            width={30} 
-                            height={30}
-                            priority={true}
-                            className="rounded-full"
-                        />
-
-                        <p>{likes.user.name}</p>
-                    </div>
-                ))}
             </div>
+
+            <p onClick={showModal} className="text-[13px] text-[--color-primary] underline">Curtidas</p>
         </div>
+
     )
 }
