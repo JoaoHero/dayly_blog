@@ -10,6 +10,9 @@ export default async function PostsList() {
                     id: true
                 }
             }
+        },
+        orderBy: {
+            createdAt: "asc"
         }
     })
 
